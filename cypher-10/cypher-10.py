@@ -14,53 +14,6 @@ from tflearn.data_augmentation import ImageAugmentation
 import pickle
 import numpy as np
 
-
-# In[16]:
-
-
-def unpickle(file):
-    import pickle
-    with open(file, 'rb') as fo:
-        dict = pickle.load(fo, encoding='bytes')
-    return dict
-
-
-# In[25]:
-
-
-# Loading the data from local directory
-
-train_data1 = unpickle("/home/skhan/cifar-10-batches-py/data_batch_1")
-train_data2 = unpickle("/home/skhan/cifar-10-batches-py/data_batch_2")
-train_data3 = unpickle("/home/skhan/cifar-10-batches-py/data_batch_3")
-train_data4 = unpickle("/home/skhan/cifar-10-batches-py/data_batch_4")
-train_data5 = unpickle("/home/skhan/cifar-10-batches-py/data_batch_5")
-label_name = unpickle("/home/skhan/cifar-10-batches-py/batches.meta")
-test_data = unpickle("/home/skhan/cifar-10-batches-py/test_batch")
-
-
-# In[26]:
-
-
-# Intializing the variables
-
-X = np.concatenate((train_data1[b'data'], train_data2[b'data'], train_data3[b'data'], train_data4[b'data'], train_data5[b'data'])) 
-y = np.concatenate((train_data1[b'labels'], train_data2[b'labels'], train_data3[b'labels'], train_data4[b'labels'], train_data5[b'labels']))
-X_test = test_data[b'data']
-y_test = test_data[b'labels']
-
-# Shuffle the data
-X, y = shuffle(X, y)
-
-# Reshape the data
-
-X = np.reshape(X,(50000,32,32,3))
-X_test = np.reshape(X_test, (32,32,3,10000))
-
-
-# In[31]:
-
-
 # Data loading and preprocessing
 
 from tflearn.datasets import cifar10
