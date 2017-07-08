@@ -92,6 +92,6 @@ network.fit(X, y, n_epoch=100, shuffle=True, validation_set=(X_test, y_test), sh
 
 # Save model when training is complete to a file
 
-model.save("bird-classifier")
+network.save("bird-classifier")
 print("Network trained and saved as bird-classifier!")
 
